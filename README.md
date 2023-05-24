@@ -5,7 +5,8 @@ Flow is a library for date navigation in your app using Jetpack Compose.
 ## Description
 
 Flow allows you to create date navigation in your app with a user-friendly interface. The library provides a flexible way to display content associated with each individual date. It utilizes the Jetpack Compose library for building the user interface.
-Features
+
+## Features
 
 *    Support for horizontal and vertical scrolling.
 *    Synchronization of horizontal and vertical scrolling: when one component is scrolled, the other automatically scrolls to the corresponding date.
