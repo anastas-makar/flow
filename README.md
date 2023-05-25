@@ -8,7 +8,7 @@ Flow allows you to create date navigation in your app with a user-friendly inter
 
 ## Features
 
-*    Support for horizontal and vertical scrolling.
+*    Support for horizontal and vertical scrolling for seamless dates navigation.
 *    Synchronization of horizontal and vertical scrolling: when one component is scrolled, the other automatically scrolls to the corresponding date.
 *    Calendar component for date selection with month scrolling and manual date input.
 *    Flexible customization of the displayed content for each date.
