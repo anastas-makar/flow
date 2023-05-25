@@ -49,12 +49,4 @@ class DateFlow : List<LocalDate> {
     override fun subList(fromIndex: Int, toIndex: Int): List<LocalDate> {
         TODO("Not yet implemented")
     }
-
-    override fun equals(other: Any?): Boolean {
-        return other is DateFlow
-    }
-
-    override fun hashCode(): Int {
-        return "version: 1".hashCode()
-    }
 }
