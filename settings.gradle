@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Flow"
+rootProject.name = "flow"
 include ':flow'
