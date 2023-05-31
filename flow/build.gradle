@@ -61,3 +61,25 @@ dependencies {
     androidTestImplementation 'org.mockito.kotlin:mockito-kotlin:4.0.0'
     androidTestImplementation 'org.mockito:mockito-android:5.3.1'
 }
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            artifact("$buildDir/outputs/aar/flow-release.aar")
+
+            groupId = 'pro.progr'
+            artifactId = 'flow'
+            version = '0.0.1-alpha'
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/anastas-makar/Flow")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}
