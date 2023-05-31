@@ -56,10 +56,24 @@ dependencies {
     implementation 'androidx.compose.ui:ui-tooling-preview:1.1.0'
     implementation 'androidx.compose.material:material:1.1.0'
 // Другие зависимости Jetpack Compose...
+    implementation 'pro.progr:flow:0.0.1-alpha'
 }
 ```
 
-*    Добавьте библиотеку Flow в ваш проект.
+* В блоке `dependencyResolutionManagement` добавьте внутрь блока `repositories`:
+```groovy
+        maven {
+            url "https://maven.pkg.github.com/anastas-makar/Flow"
+            credentials {
+                credentials {
+                    username = System.getenv("GITHUB_USERNAME")
+                    password = System.getenv("GITHUB_TOKEN")
+                }
+            }
+        }
+```
+
+Для того, чтобы получить доступ к к Github Packages, подставьте ваш логин и токен/пароль от github в поля `username` и `password`.
 
 ## Лицензия
 
