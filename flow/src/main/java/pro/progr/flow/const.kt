@@ -1,5 +1,6 @@
 package pro.progr.flow
 
+import pro.progr.flow.model.CalendarDatesRepository
 import pro.progr.flow.model.DateFlow
 import pro.progr.flow.vm.CalendarViewModel
 import java.time.LocalDate
@@ -10,7 +11,7 @@ const val START_POSITION = CALENDAR_INITIAL_LOAD_SIZE/2
 
 val startDate = LocalDate.now()
 val dateFlow = DateFlow()
-val calendarViewModel = CalendarViewModel()
+val calendarViewModel = CalendarViewModel(CalendarDatesRepository())
 
 //todo: найти startDate и всем этим методам достойное место
 

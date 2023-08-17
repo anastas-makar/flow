@@ -19,7 +19,7 @@ fun Calendar(content: @Composable (date : LocalDate) -> Unit) {
     val verticalScrollState = rememberLazyListState(initialFirstVisibleItemIndex = START_POSITION)
     val horizontalScrollState = rememberLazyListState(initialFirstVisibleItemIndex = START_POSITION)
 
-    val index = calendarViewModel.selectedGridIndex.collectAsState(initial = getIndex(calendarViewModel.selectedDate))
+    val index = calendarViewModel.selectedGridIndex.collectAsState(initial = getIndex(calendarViewModel.getSelectedDate()))
     Scroller.scroll(verticalScrollState, horizontalScrollState, index.value)
 
 

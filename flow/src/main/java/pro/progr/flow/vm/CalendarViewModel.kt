@@ -1,55 +1,56 @@
 package pro.progr.flow.vm
 
-import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import pro.progr.flow.getIndex
 import pro.progr.flow.model.CalendarPage
+import pro.progr.flow.model.DatesRepository
 import pro.progr.flow.startDate
 import java.time.LocalDate
 
-class CalendarViewModel {
+class CalendarViewModel(val repository: DatesRepository) {
 
     private var displayDate = startDate
 
-    var selectedDate = startDate
-
-    val calendarPage = mutableStateOf(CalendarPage(displayDate, selectedDate))
+    val calendarPage = mutableStateOf(CalendarPage(displayDate, repository.getAnchorDate()))
 
     fun monthBefore() {
         displayDate = displayDate.minusMonths(1)
-        calendarPage.value = CalendarPage(displayDate, selectedDate)
+        calendarPage.value = CalendarPage(displayDate, repository.getAnchorDate())
     }
 
     fun monthAfter() {
         displayDate = displayDate.plusMonths(1)
-        calendarPage.value = CalendarPage(displayDate, selectedDate)
+        calendarPage.value = CalendarPage(displayDate, repository.getAnchorDate())
     }
 
     fun updateDayOfMonth(item : Int) {
-        selectedDate = displayDate.withDayOfMonth(item)
-        calendarPage.value = CalendarPage(displayDate, selectedDate)
+        repository.updateDate(displayDate.withDayOfMonth(item))
+        calendarPage.value = CalendarPage(displayDate, repository.getAnchorDate())
     }
 
     fun updateSelectedDate(date : LocalDate) {
-        selectedDate = date
-        calendarPage.value = CalendarPage(displayDate, selectedDate)
+        repository.updateDate(date)
+        calendarPage.value = CalendarPage(displayDate, repository.getAnchorDate())
     }
 
     fun updateYear(yearName: String) {
         displayDate = displayDate.withYear(yearName.toInt())
-        calendarPage.value = CalendarPage(displayDate, selectedDate)
+        calendarPage.value = CalendarPage(displayDate, repository.getAnchorDate())
     }
 
     private val _selectedGridIndex = MutableStateFlow(getIndex(LocalDate.now()))
     val selectedGridIndex : Flow<Int> = _selectedGridIndex
 
-    private val _selectedDates = mutableStateOf(listOf(LocalDate.now()))
-    val selectedDates : State<List<LocalDate>> = _selectedDates
-
     fun selectGridDate(date : LocalDate) {
         _selectedGridIndex.value = getIndex(date)
-        _selectedDates.value = listOf(date)
+        repository.updateDate(date)
     }
+
+    fun getSelectedDate() : LocalDate {
+        return repository.getAnchorDate()
+    }
+
+    fun isDateSelected(date : LocalDate) = repository.isDateSelected(date)
 }

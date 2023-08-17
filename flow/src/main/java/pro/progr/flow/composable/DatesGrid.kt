@@ -33,7 +33,7 @@ fun DatesGrid(calendarViewModel: CalendarViewModel) {
 
             item?.let {
                 TextButton(
-                    border = if (item.localDate.isEqual(calendarViewModel.selectedDate)) //todo:
+                    border = if (calendarViewModel.isDateSelected(item.localDate))
                                 BorderStroke(width = 1.dp, color = Color.Black)
                             else
                                 null,
