@@ -4,7 +4,6 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -17,13 +16,11 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import pro.progr.flow.calendarViewModel
-import pro.progr.flow.datesGridViewModel
-import pro.progr.flow.getIndex
 import pro.progr.flow.model.CalendarDay
+import pro.progr.flow.vm.CalendarViewModel
 
 @Composable
-fun DatesGrid() {
+fun DatesGrid(calendarViewModel: CalendarViewModel) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(count = 7),
         modifier = Modifier
@@ -36,13 +33,13 @@ fun DatesGrid() {
 
             item?.let {
                 TextButton(
-                    border = if (item.selected)
+                    border = if (item.localDate.isEqual(calendarViewModel.selectedDate)) //todo:
                                 BorderStroke(width = 1.dp, color = Color.Black)
                             else
                                 null,
                     onClick = {
                         calendarViewModel.updateDayOfMonth(item.dayNumber)
-                        datesGridViewModel.selectIndex(getIndex(item.localDate))
+                        calendarViewModel.selectGridDate(item.localDate)
                     }
                 ) {
                     Text(text = AnnotatedString(item.dayNumber.toString()),

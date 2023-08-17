@@ -6,9 +6,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import pro.progr.flow.vm.CalendarViewModel
 
 @Composable
-fun GridCalendar() {
+fun GridCalendar(calendarViewModel: CalendarViewModel) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -18,6 +19,6 @@ fun GridCalendar() {
     ) {
         MonthAndYearPanel()
         DaysOfWeekPanel()
-        DatesGrid()
+        DatesGrid(calendarViewModel)
     }
 }

@@ -19,10 +19,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import pro.progr.flow.R
+import pro.progr.flow.vm.CalendarViewModel
 
 @Composable
 fun BoxScope.BottomCalendar(horizontalScrollState: LazyListState,
-                   verticalScrollState: LazyListState
+                   verticalScrollState: LazyListState,
+                            calendarViewModel: CalendarViewModel
 ) {
     Column(
         modifier = Modifier
@@ -61,7 +63,7 @@ fun BoxScope.BottomCalendar(horizontalScrollState: LazyListState,
         }
 
         if (isGridCalendarVisible.value) {
-            GridCalendar()
+            GridCalendar(calendarViewModel)
         }
     }
 
