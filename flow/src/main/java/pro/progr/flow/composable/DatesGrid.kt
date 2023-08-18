@@ -38,7 +38,7 @@ fun DatesGrid(calendarViewModel: CalendarViewModel) {
                             else
                                 null,
                     onClick = {
-                        calendarViewModel.updateDayOfMonth(item.dayNumber)
+                        calendarViewModel.updateDayOfMonth()
                         calendarViewModel.selectGridDate(item.localDate)
                     }
                 ) {

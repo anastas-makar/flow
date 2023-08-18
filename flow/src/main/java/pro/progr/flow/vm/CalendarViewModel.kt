@@ -26,8 +26,7 @@ class CalendarViewModel(val repository: DatesRepository) : ViewModel() {
         calendarPage.value = CalendarPage(displayDate, repository.getAnchorDate())
     }
 
-    fun updateDayOfMonth(item : Int) {
-        //repository.updateDate(displayDate.withDayOfMonth(item))
+    fun updateDayOfMonth() {
         calendarPage.value = CalendarPage(displayDate, repository.getAnchorDate())
     }
 
