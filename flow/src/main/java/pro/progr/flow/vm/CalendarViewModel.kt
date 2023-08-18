@@ -1,6 +1,7 @@
 package pro.progr.flow.vm
 
 import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import pro.progr.flow.getIndex
@@ -9,7 +10,7 @@ import pro.progr.flow.model.DatesRepository
 import pro.progr.flow.startDate
 import java.time.LocalDate
 
-class CalendarViewModel(val repository: DatesRepository) {
+class CalendarViewModel(val repository: DatesRepository) : ViewModel() {
 
     private var displayDate = startDate
 
@@ -26,7 +27,7 @@ class CalendarViewModel(val repository: DatesRepository) {
     }
 
     fun updateDayOfMonth(item : Int) {
-        repository.updateDate(displayDate.withDayOfMonth(item))
+        //repository.updateDate(displayDate.withDayOfMonth(item))
         calendarPage.value = CalendarPage(displayDate, repository.getAnchorDate())
     }
 
