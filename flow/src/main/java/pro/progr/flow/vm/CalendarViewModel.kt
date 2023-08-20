@@ -10,7 +10,7 @@ import pro.progr.flow.model.DatesRepository
 import pro.progr.flow.startDate
 import java.time.LocalDate
 
-class CalendarViewModel(val repository: DatesRepository) : ViewModel() {
+open class CalendarViewModel(val repository: DatesRepository) : ViewModel() {
 
     private var displayDate = startDate
 
@@ -43,7 +43,7 @@ class CalendarViewModel(val repository: DatesRepository) : ViewModel() {
     private val _selectedGridIndex = MutableStateFlow(getIndex(LocalDate.now()))
     val selectedGridIndex : Flow<Int> = _selectedGridIndex
 
-    fun selectGridDate(date : LocalDate) {
+    open fun selectGridDate(date : LocalDate) {
         _selectedGridIndex.value = getIndex(date)
         repository.updateDate(date)
     }
