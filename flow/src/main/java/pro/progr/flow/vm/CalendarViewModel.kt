@@ -48,9 +48,9 @@ open class CalendarViewModel(val repository: DatesRepository) : ViewModel() {
         repository.updateDate(date)
     }
 
-    fun getSelectedDate() : LocalDate {
+    open fun getSelectedDate() : LocalDate {
         return repository.getAnchorDate()
     }
 
-    fun isDateSelected(date : LocalDate) = repository.isDateSelected(date)
+    open fun isDateSelected(date : LocalDate) = repository.isDateSelected(date)
 }
