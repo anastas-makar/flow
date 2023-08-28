@@ -17,7 +17,7 @@ fun GridCalendar(calendarViewModel: CalendarViewModel) {
             .padding(0.dp)
             .background(Color.White),
     ) {
-        MonthAndYearPanel()
+        MonthAndYearPanel(calendarViewModel)
         DaysOfWeekPanel()
         DatesGrid(calendarViewModel)
     }
