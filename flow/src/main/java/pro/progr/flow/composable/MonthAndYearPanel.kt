@@ -24,7 +24,7 @@ fun MonthAndYearPanel(calendarViewModel: CalendarViewModel) {
         if (editYear.value) {
             EditYear(editYear = editYear, calendarViewModel = calendarViewModel)
         } else {
-            ShowYear(editYear = editYear)
+            ShowYear(editYear = editYear, calendarViewModel = calendarViewModel)
         }
 
         Spacer(modifier = Modifier.width(8.dp))
