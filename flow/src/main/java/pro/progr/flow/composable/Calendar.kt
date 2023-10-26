@@ -9,7 +9,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.unit.Velocity
-import pro.progr.flow.*
+import pro.progr.flow.START_POSITION
+import pro.progr.flow.calendarViewModel
+import pro.progr.flow.getDateByIndex
+import pro.progr.flow.getIndex
 import pro.progr.flow.util.Scroller
 import java.time.LocalDate
 
