@@ -51,11 +51,9 @@ fun DatesGrid(calendarViewModel: CalendarViewModel) {
                             calendarViewModel.updateDayOfMonth()
                             calendarViewModel.selectGridDate(item.localDate)
                         },
-                        colors = if (calendarViewModel.isDateSelected(item.localDate))
-                                    ButtonDefaults.textButtonColors(
-                                        backgroundColor = Color(0xffDCEDC8))
-                                else
-                                    ButtonDefaults.textButtonColors()
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(color = if (calendarViewModel.isDateSelected(item.localDate)) Color(0xffDCEDC8) else Color.Transparent)
                     ) {
                         Text(
                             text = AnnotatedString(item.dayNumber.toString()),
