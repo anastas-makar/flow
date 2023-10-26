@@ -31,17 +31,31 @@ fun DatesGrid(calendarViewModel: CalendarViewModel) {
         items(items = calendarViewModel.calendarPage.value.month.pageDays) { item: CalendarDay? ->
 
             item?.let {
-                if (!calendarViewModel.blockTillToday || item.localDate >= LocalDate.now()) {
+                if (calendarViewModel.blockTillToday && item.localDate < LocalDate.now()) {
+                    TextButton(modifier = Modifier
+                        .fillMaxSize()
+                        .background(color = Color.LightGray), enabled = false, onClick = {}) {
+                        Text(
+                            text = AnnotatedString(item.dayNumber.toString()),
+                            style = TextStyle(
+                                textAlign = TextAlign.Center,
+                                color = if (item.isWeekend) Color.Red else Color.Black,
+                                //fontWeight = FontWeight.Bold
+                            )
+                        )
+                    }
+                } else if (calendarViewModel.multiSelect) {
                     TextButton(
-                        border = if (calendarViewModel.isDateSelected(item.localDate))
-                            BorderStroke(width = 1.dp, color = Color.Black)
-                        else
-                            null,
                         onClick = {
                             //todo: вроде это два разных действия для разных календарей
                             calendarViewModel.updateDayOfMonth()
                             calendarViewModel.selectGridDate(item.localDate)
-                        }
+                        },
+                        colors = if (calendarViewModel.isDateSelected(item.localDate))
+                                    ButtonDefaults.textButtonColors(
+                                        backgroundColor = Color(0xffDCEDC8))
+                                else
+                                    ButtonDefaults.textButtonColors()
                     ) {
                         Text(
                             text = AnnotatedString(item.dayNumber.toString()),
@@ -53,7 +67,17 @@ fun DatesGrid(calendarViewModel: CalendarViewModel) {
                         )
                     }
                 } else {
-                    TextButton(modifier = Modifier.fillMaxSize().background(color = Color.LightGray), enabled = false, onClick = {}) {
+                    TextButton(
+                        border = if (calendarViewModel.isDateSelected(item.localDate))
+                            BorderStroke(width = 1.dp, color = Color.Black)
+                        else
+                            null,
+                        onClick = {
+                            //todo: вроде это два разных действия для разных календарей
+                            calendarViewModel.updateDayOfMonth()
+                            calendarViewModel.selectGridDate(item.localDate)
+                        }
+                    ) {
                         Text(
                             text = AnnotatedString(item.dayNumber.toString()),
                             style = TextStyle(

@@ -55,4 +55,6 @@ open class CalendarViewModel(val repository: DatesRepository) : ViewModel() {
     open fun isDateSelected(date : LocalDate) = repository.isDateSelected(date)
 
     open var blockTillToday = false
+
+    open var multiSelect = false
 }

@@ -74,12 +74,13 @@ publishing {
     }
     repositories {
         maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/anastas-makar/Flow")
-            credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
-                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
-            }
+//            name = "GitHubPackages"
+//            url = uri("https://maven.pkg.github.com/anastas-makar/Flow")
+//            credentials {
+//                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
+//                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+//            }
+            url "file:///${buildDir}/repo"
         }
     }
 }
