@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import pro.progr.flow.getIndex
 import pro.progr.flow.model.CalendarPage
 import pro.progr.flow.model.DatesRepository
+import pro.progr.flow.model.Index
 import pro.progr.flow.startDate
 import java.time.LocalDate
 
@@ -41,7 +42,7 @@ open class CalendarViewModel(val repository: DatesRepository) : ViewModel() {
     }
 
     private val _selectedGridIndex = MutableStateFlow(getIndex(LocalDate.now()))
-    val selectedGridIndex : Flow<Int> = _selectedGridIndex
+    val selectedGridIndex : Flow<Index> = _selectedGridIndex
 
     open fun selectGridDate(date : LocalDate) {
         _selectedGridIndex.value = getIndex(date)
