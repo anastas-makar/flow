@@ -1,5 +1,6 @@
 package pro.progr.flow.composable
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -10,8 +11,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.unit.Velocity
+import androidx.compose.ui.zIndex
 import pro.progr.flow.START_POSITION
 import pro.progr.flow.calendarViewModel
 import pro.progr.flow.getDateByIndex
@@ -45,8 +48,10 @@ fun CalendarWithFloatingElement(content: @Composable (date : LocalDate) -> Unit,
     ) {
         VerticalDatesList(nestedScrollConnectionVert, verticalScrollState, content)
 
+        Box(modifier = Modifier.fillMaxSize().background(color = Color(0x88FFFFFF)).zIndex(1f))
+
         Column(
-            modifier = Modifier.align(Alignment.BottomCenter)
+            modifier = Modifier.align(Alignment.BottomCenter).zIndex(2f)
         ) {
             floatingElement()
 
