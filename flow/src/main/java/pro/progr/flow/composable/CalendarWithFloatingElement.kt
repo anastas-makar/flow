@@ -48,7 +48,7 @@ fun CalendarWithFloatingElement(content: @Composable (date : LocalDate) -> Unit,
     ) {
         VerticalDatesList(nestedScrollConnectionVert, verticalScrollState, content)
 
-        Box(modifier = Modifier.fillMaxSize().background(color = Color(0x88FFFFFF)).zIndex(1f))
+        Box(modifier = Modifier.fillMaxSize().background(color = Color(0xEEFFFFFF)).zIndex(1f))
 
         Column(
             modifier = Modifier.align(Alignment.BottomCenter).zIndex(2f)
