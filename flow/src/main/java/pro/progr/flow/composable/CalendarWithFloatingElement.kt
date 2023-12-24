@@ -4,6 +4,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -56,7 +57,14 @@ fun CalendarWithFloatingElement(content: @Composable (date : LocalDate) -> Unit,
         VerticalDatesList(nestedScrollConnectionVert, verticalScrollState, content)
 
         AnimatedVisibility(visible = floatingElementViewModel.showScrim.value, enter = fadeIn(), exit = fadeOut()) {
-            Box(modifier = Modifier.fillMaxSize().background(color = Color(0xEEFFFFFF)).zIndex(1f))
+            Box(modifier = Modifier
+                .fillMaxSize()
+                .background(color = Color(0xEEFFFFFF))
+                .zIndex(1f)
+                .clickable {
+                    floatingElementViewModel.showScrim.value = false
+                }
+            )
         }
 
         Column(
